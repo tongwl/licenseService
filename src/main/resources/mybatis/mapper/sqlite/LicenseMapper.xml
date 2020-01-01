@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.sqlite.LicenseMapper">
+    <resultMap id="licenseMap" type="java.util.Map">
+
+    </resultMap>
+    <select id="getLicenseList" resultMap="licenseMap">
+        select * from license order by activeTime desc
+    </select>
+
+    <insert id="createLicense" parameterType="com.license.entity.LicenseEntity">
+        INSERT INTO license
+        (company, installedID, clusterSize, licenseKey, licenseDays, activeTime, isTemp)
+        values(#{company}, #{installedID}, #{clusterSize}, #{licenseKey}, #{licenseDays}, #{activeTime}, #{isTemp});
+    </insert>
+
+    <update id="updateLicense" parameterType="com.license.entity.LicenseEntity">
+        update license
+        set company = #{company},
+        installedID = #{installedID},
+        clusterSize = #{clusterSize},
+        licenseKey = #{licenseKey},
+        licenseDays = #{licenseDays},
+        activeTime = #{activeTime},
+        isTemp = #{isTemp}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteLicense" parameterType="String">
+        delete from license where id = #{id}
+	</delete>
+</mapper>

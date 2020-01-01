@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    sqlite:
+      type: com.alibaba.druid.pool.DruidDataSource
+      username:
+      password:
+      url: jdbc:sqlite:/Users/weitong/vueService/demo/src/main/resources/license.db
+      driver-class-name: org.sqlite.JDBC
+
+mybatis:
+  type-aliases-package: com.license.entity
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+
