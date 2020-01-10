@@ -1,0 +1,6 @@
+com/license/datasource/SqliteSourceConfig.class
+com/mapper/sqlite/LicenseMapper.class
+com/license/Application.class
+com/license/service/LicenseService.class
+com/license/controller/LicenseController.class
+com/license/entity/LicenseEntity.class

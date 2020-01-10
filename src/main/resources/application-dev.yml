@@ -7,7 +7,7 @@ spring:
       type: com.alibaba.druid.pool.DruidDataSource
       username:
       password:
-      url: jdbc:sqlite:/Users/weitong/vueService/demo/src/main/resources/license.db
+      url: jdbc:sqlite::resource:db/license.db
       driver-class-name: org.sqlite.JDBC
 
 mybatis:
