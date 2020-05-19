@@ -16,6 +16,10 @@ public class LicenseService {
     @Autowired
     LicenseMapper licenseMapper;
 
+    private static final String MAC = "mac";
+    private static final String WINDOWS = "windows";
+    private static final String LINUX = "linux";
+
     public List<Map<String, Object>> getLicenseList() {
         return licenseMapper.getLicenseList();
     }
@@ -34,7 +38,15 @@ public class LicenseService {
 
     private LicenseEntity setLicenseEntity(LicenseEntity licenseEntity) throws InterruptedException {
         StringBuilder sb = new StringBuilder();
-        sb.append("licensegen ");
+        String operatingSystem = getOperatingSystem();
+        //don't support windows util now
+        if (operatingSystem.equals(MAC)) {
+            //if mac, use tool licensegen
+            sb.append("licensegen ");
+        } else {
+            //if linux or unix, use go_lic
+            sb.append("/usr/java/projects/go_lic ");
+        }
         sb.append(licenseEntity.getCompany());
         sb.append(" ");
         sb.append(licenseEntity.getInstalledID());
@@ -49,8 +61,11 @@ public class LicenseService {
     }
 
     private String execCommand(String command) throws InterruptedException {
-        command = getClass().getResource("/").getFile().toString() + command;
-        System.out.println(getClass().getResource("/").getFile().toString());
+        String operatingSystem = getOperatingSystem();
+        //for mac, linux or unix doesn't need this
+        if (operatingSystem.equals(MAC)) {
+            command = getClass().getResource("/").getFile().toString() + command;
+        }
         String returnString = "";
         Process pro = null;
         Runtime runTime = Runtime.getRuntime();
@@ -71,5 +86,18 @@ public class LicenseService {
         } catch (IOException ex) {
         }
         return returnString;
+    }
+
+    private String getOperatingSystem() {
+        String osName = System.getProperty("os.name").toLowerCase();
+        if (osName.startsWith("mac os")) {
+            return MAC;
+        } else if (osName.startsWith("windows")) {
+            return WINDOWS;
+        } else if (osName.startsWith("linux")) {
+            return LINUX;
+        } else {
+            return "";
+        }
     }
 }
