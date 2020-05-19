@@ -46,3 +46,16 @@
    ```
 
 5. 启动完成后，如果前后端不是部署在同一台机器上，或则service的启动端口不是8080，请手动将ip和端口填入到前端配置文件**host.json**中。 前端页面若使用yarn start启动的服务，只需要在public/host.json中修改；若前端页面使用的是其他服务器(如nginx)，那么需要在dist/host.json中修改。
+
+
+
+## notes
+
+linux离线安装jdk教程：
+
+[https://github.com/tongwl/study/tree/master/java/jdk/linux%E4%B8%8B%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85jdk](https://github.com/tongwl/study/tree/master/java/jdk/linux下如何安装jdk)
+
+
+
+
+
