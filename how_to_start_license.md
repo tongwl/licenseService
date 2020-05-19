@@ -3,10 +3,14 @@
 
 
 
+
+
 ### 启动license前端服务器
 
 license前端项目使用nginx服务器，安装目录是 `/usr/local/nginx/`，
 进入到 `/usr/local/nginx/sbin`目录下运行` ./nginx `命令即可启动license服务器。
+
+
 
 
 
@@ -21,6 +25,8 @@ nohup java -jar license-service-1.0-SNAPSHOT.jar --server.port=8080 &
 
 
 
+
+
 ### 访问地址
 
 ```
@@ -28,6 +34,8 @@ http://172.16.110.15:9000/
 ```
 
 *如果访问不通，参看关闭防火墙。*
+
+
 
 
 
