@@ -27,7 +27,7 @@ nohup java -jar license-service-1.0-SNAPSHOT.jar --server.port=8080 &
 http://172.16.110.15:9000/
 ```
 
-*如果访问不同，参看关闭防火墙。*
+*如果访问不通，参看关闭防火墙。*
 
 
 
